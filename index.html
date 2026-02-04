@@ -1,5 +1,743 @@
-<html>
-  <body>
-    <h2>hello</h2>
-  </body>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>사랑나무쌤 : 이애본</title>
+  <style>
+    :root{
+      /* 다크 블루 농도(밝게 조정) */
+      --bgTop:#101f3a;     /* 진하지만 너무 어둡지 않게 */
+      --bgMid:#0d1930;
+      --bgBot:#081225;
+
+      --card: rgba(255,255,255,.10);
+      --card2: rgba(255,255,255,.14);
+      --stroke: rgba(255,255,255,.16);
+
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.58);
+
+      --accent1:#7c5cff;
+      --accent2:#27d6ff;
+      --good:#2ee59d;
+      --warn:#ffcc66;
+
+      --shadow: 0 22px 70px rgba(0,0,0,.40);
+      --radius: 22px;
+
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      overflow-x:hidden;
+
+      /* 다크 블루 농도 조절 그라데이션(이전보다 밝게) */
+      background:
+        radial-gradient(1200px 800px at 18% 12%, rgba(124,92,255,.20), transparent 60%),
+        radial-gradient(1000px 700px at 85% 25%, rgba(39,214,255,.16), transparent 55%),
+        radial-gradient(900px 650px at 60% 90%, rgba(46,229,157,.10), transparent 55%),
+        linear-gradient(180deg, var(--bgTop), var(--bgMid) 45%, var(--bgBot));
+    }
+
+    /* JS 효과용 캔버스 */
+    #bgFX{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      z-index:0;
+      pointer-events:none;
+      opacity:.55; /* 과하면 .35~.45로 */
+      filter:saturate(1.05);
+    }
+
+    /* subtle animated grain */
+    .grain{
+      pointer-events:none;
+      position:fixed;
+      inset:-40%;
+      opacity:.10;
+      z-index:1;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      transform:translateZ(0);
+      animation: grainMove 10s steps(10) infinite;
+      mix-blend-mode: overlay;
+    }
+    @keyframes grainMove{
+      0%{transform:translate(-2%, -1%)}
+      25%{transform:translate(2%, -3%)}
+      50%{transform:translate(3%, 2%)}
+      75%{transform:translate(-3%, 3%)}
+      100%{transform:translate(-2%, -1%)}
+    }
+
+    .wrap{
+      min-height:100%;
+      display:grid;
+      place-items:center;
+      padding:48px 18px;
+      position:relative;
+      z-index:2; /* 캔버스 위 */
+    }
+
+    .shell{
+      width:min(980px, 100%);
+      position:relative;
+    }
+
+    .card{
+      position:relative;
+      border-radius:var(--radius);
+      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.05));
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(600px 220px at 22% 0%, rgba(124,92,255,.18), transparent 58%),
+        radial-gradient(600px 220px at 82% 0%, rgba(39,214,255,.14), transparent 58%);
+      filter: blur(10px);
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .content{
+      position:relative;
+      padding:34px 28px 26px;
+    }
+
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      padding-bottom:14px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:240px;
+    }
+
+    .logo{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 35%),
+        linear-gradient(135deg, var(--accent1), var(--accent2));
+      box-shadow: 0 10px 30px rgba(124,92,255,.20);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo::after{
+      content:"";
+      position:absolute;
+      inset:-60%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.32), transparent);
+      transform: rotate(25deg);
+      animation: shine 3.2s infinite;
+    }
+    @keyframes shine{
+      0%{transform:translateX(-40%) rotate(25deg)}
+      100%{transform:translateX(40%) rotate(25deg)}
+    }
+
+    .brand .title{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+    .brand .title small{
+      color:var(--muted2);
+      font-weight:700;
+      letter-spacing:.02em;
+    }
+    .brand .title strong{
+      font-size:1.05rem;
+      font-weight:900;
+    }
+
+    .status{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--muted);
+      font-weight:800;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: var(--warn);
+      box-shadow: 0 0 0 6px rgba(255,204,102,.12);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{transform:scale(1); opacity:1}
+      50%{transform:scale(1.12); opacity:.75}
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      padding-top:22px;
+    }
+    @media (max-width: 860px){
+      .hero{grid-template-columns:1fr; gap:14px}
+      .content{padding:28px 20px 22px}
+    }
+
+    h1{
+      margin:0;
+      font-size: clamp(1.55rem, 2.4vw, 2.25rem);
+      letter-spacing:-.02em;
+      font-weight:950;
+    }
+    .lead{
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:1.02rem;
+    }
+
+    .pillRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--muted);
+      font-weight:800;
+      font-size:.95rem;
+    }
+    .pill b{color:var(--text)}
+    .pill .kbd{
+      font-family:var(--mono);
+      font-size:.92em;
+      padding:2px 8px;
+      border-radius:8px;
+      background: rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.12);
+      color:rgba(255,255,255,.88);
+    }
+
+    .side{
+      border-radius: calc(var(--radius) - 6px);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.12);
+      padding:18px 16px;
+    }
+
+    .side h2{
+      margin:0 0 10px;
+      font-size:1.02rem;
+      letter-spacing:-.01em;
+      font-weight:900;
+    }
+
+    .count{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+    }
+    @media (max-width: 520px){
+      .count{grid-template-columns: repeat(2, 1fr)}
+    }
+
+    .box{
+      padding:12px 10px;
+      border-radius:16px;
+      background: rgba(0,0,0,.16);
+      border:1px solid rgba(255,255,255,.10);
+      text-align:center;
+    }
+    .num{
+      font-family:var(--mono);
+      font-size:1.35rem;
+      font-weight:950;
+      letter-spacing:.02em;
+    }
+    .lbl{
+      margin-top:6px;
+      font-size:.85rem;
+      color:var(--muted2);
+      font-weight:800;
+    }
+
+    .deadline{
+      margin-top:12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 12px;
+      border-radius:16px;
+      background: rgba(0,0,0,.14);
+      border:1px dashed rgba(255,255,255,.18);
+      color:var(--muted);
+      font-weight:800;
+      flex-wrap:wrap;
+    }
+    .deadline strong{color:var(--text)}
+    .badge{
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(46,229,157,.12);
+      border:1px solid rgba(46,229,157,.25);
+      color: rgba(46,229,157,.95);
+      font-weight:950;
+      font-family:var(--mono);
+      font-size:.92rem;
+    }
+
+    .progressWrap{ margin-top:16px; }
+    .progressHead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      color:var(--muted);
+      font-weight:900;
+      font-size:.95rem;
+    }
+    .bar{
+      height:12px;
+      margin-top:10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+    }
+    .fill{
+      height:100%;
+      width:35%;
+      border-radius:999px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      box-shadow: 0 10px 24px rgba(39,214,255,.12);
+      transition: width .6s ease;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .btn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:950;
+      font-size:0.98rem;
+      color:var(--text);
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      transition: transform .12s ease, background .2s ease, border-color .2s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      user-select:none;
+    }
+    .btn:hover{transform:translateY(-1px); background: rgba(255,255,255,.11); border-color: rgba(255,255,255,.18);}
+    .btn:active{transform:translateY(0px)}
+    .btnPrimary{
+      background: linear-gradient(135deg, rgba(124,92,255,.82), rgba(39,214,255,.74));
+      border-color: rgba(255,255,255,.14);
+    }
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:22px;
+      transform:translateX(-50%);
+      background: rgba(0,0,0,.50);
+      border:1px solid rgba(255,255,255,.14);
+      padding:10px 12px;
+      border-radius:14px;
+      color: rgba(255,255,255,.90);
+      font-weight:900;
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .25s ease, transform .25s ease;
+      box-shadow: 0 16px 48px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      max-width:min(560px, calc(100% - 28px));
+      text-align:center;
+      z-index:3;
+    }
+    .toast.show{
+      opacity:1;
+      transform:translateX(-50%) translateY(-4px);
+    }
+
+    footer{
+      margin-top:14px;
+      padding:14px 18px 18px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      color:var(--muted2);
+      font-size:.92rem;
+      border-top:1px solid rgba(255,255,255,.08);
+      position:relative;
+    }
+
+    .hint{font-family:var(--mono); opacity:.85;}
+    a.mail{
+      color: rgba(255,255,255,.88);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,.25);
+      padding-bottom:2px;
+    }
+    a.mail:hover{
+      border-bottom-color: rgba(39,214,255,.55);
+    }
+  </style>
+</head>
+<body>
+  <!-- JS 배경 효과 캔버스 -->
+  <canvas id="bgFX" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <div class="shell">
+      <section class="card" role="status" aria-live="polite">
+        <div class="content">
+          <div class="top">
+            <div class="brand">
+              <div class="logo" aria-hidden="true"></div>
+              <div class="title">
+                <small>NOTICE</small>
+                <strong>홈페이지 안내</strong>
+              </div>
+            </div>
+            <div class="status">
+              <span class="dot" aria-hidden="true"></span>
+              <span>현재 홈페이지 제작중입니다</span>
+            </div>
+          </div>
+
+          <div class="hero">
+            <div class="mainText">
+              <h2>사이트 제작중입니다.</h2>
+              <p class="lead">
+                현재 사이트를 새롭게 구축하고 있으며, 더 빠르고 편리한 서비스로 찾아뵙겠습니다.
+                아래 완료 예정일을 참고해 주세요.
+              </p>
+
+              <div class="pillRow">
+                <div class="pill">
+                  완료 예정일: <b id="deadlineText">2026년 2월 28일</b>
+                </div>
+                <div class="pill">
+                  상태: <span class="kbd" id="statusText">개발 진행중</span>
+                </div>
+                <div class="pill">
+                  남은 기간: <span class="kbd" id="daysLeft">-</span>
+                </div>
+              </div>
+
+              <div class="actions">
+                <button class="btn btnPrimary" id="copyBtn" type="button">
+                  완료일 복사
+                </button>
+                <button class="btn" id="refreshBtn" type="button">
+                  카운트다운 새로고침
+                </button>
+              </div>
+
+              <div class="progressWrap">
+                <div class="progressHead">
+                  <span>진행 현황(추정)</span>
+                  <span id="progressPct">35%</span>
+                </div>
+                <div class="bar" aria-label="진행률">
+                  <div class="fill" id="progressFill"></div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="side">
+              <h2>카운트다운</h2>
+              <div class="count" aria-label="카운트다운">
+                <div class="box">
+                  <div class="num" id="d">-</div>
+                  <div class="lbl">일</div>
+                </div>
+                <div class="box">
+                  <div class="num" id="h">-</div>
+                  <div class="lbl">시간</div>
+                </div>
+                <div class="box">
+                  <div class="num" id="m">-</div>
+                  <div class="lbl">분</div>
+                </div>
+                <div class="box">
+                  <div class="num" id="s">-</div>
+                  <div class="lbl">초</div>
+                </div>
+              </div>
+
+              <div class="deadline">
+                <div>
+                  완료시일 <strong>2026-02-28</strong>
+                </div>
+                <span class="badge" id="dday">D--</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <footer>
+          <div>
+            WebMaster :
+            <a class="mail" href="mailto:aebon@dreamitbiz.com">aebon@dreamitbiz.com</a>
+          </div>
+          <div class="hint">Last update: <span id="nowText">-</span></div>
+        </footer>
+      </section>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+  <script>
+    (function(){
+      // -----------------------------
+      // 1) 완료일 카운트다운
+      // -----------------------------
+      const deadline = new Date('2026-02-28T23:59:59+09:00');
+      const $ = (id) => document.getElementById(id);
+      const pad = (n) => String(n).padStart(2, '0');
+
+      const toast = (msg) => {
+        const el = $('toast');
+        el.textContent = msg;
+        el.classList.add('show');
+        clearTimeout(toast._t);
+        toast._t = setTimeout(()=> el.classList.remove('show'), 1800);
+      };
+
+      function formatNowKST(){
+        const now = new Date();
+        const kst = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+        const yyyy = kst.getFullYear();
+        const mm = pad(kst.getMonth()+1);
+        const dd = pad(kst.getDate());
+        const hh = pad(kst.getHours());
+        const mi = pad(kst.getMinutes());
+        const ss = pad(kst.getSeconds());
+        return `${yyyy}-${mm}-${dd} ${hh}:${mi}:${ss} (KST)`;
+      }
+
+      function updateCountdown(){
+        const now = new Date();
+        const diff = deadline - now;
+
+        $('nowText').textContent = formatNowKST();
+
+        if (diff <= 0){
+          $('d').textContent = '0';
+          $('h').textContent = '00';
+          $('m').textContent = '00';
+          $('s').textContent = '00';
+          $('daysLeft').textContent = '0일';
+          $('dday').textContent = 'D-DAY';
+          $('statusText').textContent = '오픈 준비중';
+          $('progressPct').textContent = '100%';
+          $('progressFill').style.width = '100%';
+          return;
+        }
+
+        const totalSeconds = Math.floor(diff / 1000);
+        const days = Math.floor(totalSeconds / (3600*24));
+        const hours = Math.floor((totalSeconds % (3600*24)) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        $('d').textContent = days;
+        $('h').textContent = pad(hours);
+        $('m').textContent = pad(minutes);
+        $('s').textContent = pad(seconds);
+
+        $('daysLeft').textContent = `${days}일`;
+        $('dday').textContent = `D-${days}`;
+
+        // 진행률(추정): 2026-02-01 ~ 마감
+        const start = new Date('2026-02-01T00:00:00+09:00');
+        const span = Math.max(1, deadline - start);
+        const done = Math.min(span, Math.max(0, now - start));
+        let pct = Math.round((done / span) * 100);
+        pct = Math.max(5, Math.min(95, pct));
+
+        $('progressPct').textContent = `${pct}%`;
+        $('progressFill').style.width = `${pct}%`;
+      }
+
+      $('copyBtn').addEventListener('click', async () => {
+        const text = '완료시일: 2026년 2월 28일';
+        try{
+          await navigator.clipboard.writeText(text);
+          toast('완료시일을 복사했습니다.');
+        }catch(e){
+          toast('복사 권한이 없어 복사에 실패했습니다.');
+        }
+      });
+
+      $('refreshBtn').addEventListener('click', () => {
+        updateCountdown();
+        toast('카운트다운을 갱신했습니다.');
+      });
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // -----------------------------
+      // 2) JS 배경 효과 (부드러운 파티클/빛망울)
+      //    - 마우스/터치 위치에 살짝 끌리는 느낌
+      // -----------------------------
+      const canvas = document.getElementById('bgFX');
+      const ctx = canvas.getContext('2d', { alpha: true });
+
+      let w, h, dpr;
+      const particles = [];
+      const PCOUNT = Math.min(90, Math.max(50, Math.floor((window.innerWidth * window.innerHeight) / 18000)));
+
+      const pointer = { x: 0, y: 0, active: false };
+      function resize(){
+        dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+        w = canvas.width = Math.floor(window.innerWidth * dpr);
+        h = canvas.height = Math.floor(window.innerHeight * dpr);
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+      }
+
+      function rand(min, max){ return Math.random() * (max - min) + min; }
+
+      function init(){
+        particles.length = 0;
+        for(let i=0; i<PCOUNT; i++){
+          particles.push({
+            x: rand(0, w),
+            y: rand(0, h),
+            vx: rand(-0.22, 0.22) * dpr,
+            vy: rand(-0.18, 0.18) * dpr,
+            r: rand(24, 70) * dpr,
+            a: rand(0.05, 0.14),
+            hue: rand(195, 265),  // 블루~퍼플 계열
+          });
+        }
+      }
+
+      function onMove(clientX, clientY){
+        pointer.x = clientX * dpr;
+        pointer.y = clientY * dpr;
+        pointer.active = true;
+      }
+
+      window.addEventListener('mousemove', (e)=> onMove(e.clientX, e.clientY), { passive:true });
+      window.addEventListener('touchmove', (e)=>{
+        if(e.touches && e.touches[0]) onMove(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive:true });
+      window.addEventListener('mouseleave', ()=> pointer.active = false, { passive:true });
+      window.addEventListener('touchend', ()=> pointer.active = false, { passive:true });
+
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+
+        // 아주 옅은 베일(잔상)로 부드러운 움직임
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = 'rgba(0,0,0,0.02)';
+        ctx.fillRect(0,0,w,h);
+
+        // 빛망울
+        ctx.globalCompositeOperation = 'lighter';
+
+        for(const p of particles){
+          // 포인터에 약하게 끌림
+          if(pointer.active){
+            const dx = pointer.x - p.x;
+            const dy = pointer.y - p.y;
+            const dist = Math.max(120*dpr, Math.hypot(dx,dy));
+            const pull = (1 / dist) * 18 * dpr; // 세기
+            p.vx += dx * pull * 0.0006;
+            p.vy += dy * pull * 0.0006;
+          }
+
+          p.x += p.vx;
+          p.y += p.vy;
+
+          // 천천히 감쇠
+          p.vx *= 0.995;
+          p.vy *= 0.995;
+
+          // 경계 반사
+          if(p.x < -p.r) p.x = w + p.r;
+          if(p.x > w + p.r) p.x = -p.r;
+          if(p.y < -p.r) p.y = h + p.r;
+          if(p.y > h + p.r) p.y = -p.r;
+
+          const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+          g.addColorStop(0, `hsla(${p.hue}, 90%, 65%, ${p.a})`);
+          g.addColorStop(1, `hsla(${p.hue}, 90%, 65%, 0)`);
+
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+          ctx.fill();
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      resize();
+      init();
+      draw();
+
+      window.addEventListener('resize', ()=>{
+        resize();
+        init();
+      }, { passive:true });
+
+    })();
+  </script>
+</body>
 </html>
