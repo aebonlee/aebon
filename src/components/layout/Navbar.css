@@ -8,70 +8,46 @@
   transition: all var(--transition-base);
 }
 
-.navbar--scrolled {
-  background: var(--bg-navbar);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  box-shadow: var(--shadow-sm);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.navbar__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-}
-
+/* 스크롤 전: Hero 위 - 흰색 텍스트 */
 .navbar__logo {
   display: flex;
   align-items: center;
   gap: 4px;
   font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
-  color: var(--text-primary);
+  color: rgba(255, 255, 255, 0.95);
   padding: var(--space-sm);
+  transition: color var(--transition-base);
 }
 
 .navbar__logo-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--color-primary);
+  background: #38BDF8;
   display: inline-block;
-}
-
-.navbar__menu {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
+  transition: background var(--transition-base);
 }
 
 .navbar__link {
   padding: var(--space-sm) var(--space-md);
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.75);
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
   white-space: nowrap;
 }
 
 .navbar__link:hover {
-  color: var(--color-primary);
-  background: rgba(37, 99, 235, 0.08);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .navbar__link--active {
-  color: var(--color-primary);
-  background: rgba(37, 99, 235, 0.1);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
   font-weight: var(--fw-bold);
-}
-
-.navbar__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
 }
 
 .navbar__hamburger {
@@ -81,7 +57,87 @@
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color var(--transition-base);
+}
+
+/* 스크롤 후: 배경 있음 - 일반 텍스트 색상 */
+.navbar--scrolled {
+  background: var(--bg-navbar);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar--scrolled .navbar__logo {
   color: var(--text-primary);
+}
+
+.navbar--scrolled .navbar__logo-dot {
+  background: var(--color-primary);
+}
+
+.navbar--scrolled .navbar__link {
+  color: var(--text-secondary);
+}
+
+.navbar--scrolled .navbar__link:hover {
+  color: var(--color-primary);
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.navbar--scrolled .navbar__link--active {
+  color: var(--color-primary);
+  background: rgba(37, 99, 235, 0.1);
+  font-weight: var(--fw-bold);
+}
+
+.navbar--scrolled .navbar__hamburger {
+  color: var(--text-primary);
+}
+
+/* ThemeToggle - 스크롤 전 흰색 */
+.navbar .theme-toggle {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  transform: rotate(30deg);
+}
+
+.navbar--scrolled .theme-toggle {
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+.navbar--scrolled .theme-toggle:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
 .navbar__overlay {
@@ -109,10 +165,25 @@
     z-index: 999;
   }
 
+  /* 모바일 메뉴 열림: 배경 있으므로 일반 색상 */
   .navbar__menu--open {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
+  }
+
+  .navbar__menu--open .navbar__link {
+    color: var(--text-secondary);
+  }
+
+  .navbar__menu--open .navbar__link:hover {
+    color: var(--color-primary);
+    background: rgba(37, 99, 235, 0.08);
+  }
+
+  .navbar__menu--open .navbar__link--active {
+    color: var(--color-primary);
+    background: rgba(37, 99, 235, 0.1);
   }
 
   .navbar__hamburger {
