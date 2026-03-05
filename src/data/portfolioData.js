@@ -406,12 +406,69 @@ export const testimonials = [
 ]
 
 export const galleryItems = [
-  { id: 1, title: '한신대 강의', category: '강의', placeholder: true },
-  { id: 2, title: '학술 발표', category: '발표', placeholder: true },
-  { id: 3, title: '장관상 수상', category: '수상', placeholder: true },
-  { id: 4, title: 'HRD 컨퍼런스', category: '활동', placeholder: true },
-  { id: 5, title: '캡스톤 디자인 지도', category: '강의', placeholder: true },
-  { id: 6, title: '직업훈련 워크숍', category: '활동', placeholder: true },
+  { id: 1, title: '산업자원부 장관상', category: '상장', image: null, description: '2006년 직업능력개발 분야 우수 공로 수상' },
+  { id: 2, title: '고용노동부 장관상', category: '상장', image: null, description: '2012년 직업능력개발훈련 분야 우수 공로 수상' },
+  { id: 3, title: '고용노동부 장관상 (HRD)', category: '상장', image: null, description: '2018년 인적자원개발 분야 우수 공로 수상' },
+  { id: 4, title: '중소벤처기업부 장관상', category: '상장', image: null, description: '2022년 중소기업 인력양성 분야 공로 수상' },
+  { id: 5, title: '정보처리기사', category: '자격증', image: null, description: '국가기술자격 정보처리기사' },
+  { id: 6, title: '전자상거래관리사 1급', category: '자격증', image: null, description: '국가공인 전자상거래관리사 1급' },
+  { id: 7, title: '직업능력개발훈련교사', category: '자격증', image: null, description: '16개 분야 직업능력개발훈련교사 자격' },
+  { id: 8, title: '평생교육사 2급', category: '자격증', image: null, description: '국가자격 평생교육사' },
+  { id: 9, title: 'HRD Korea 컨퍼런스', category: '활동', image: null, description: '디지털 전환 시대의 HRD 전략 발표' },
+  { id: 10, title: '직업훈련 워크숍', category: '활동', image: null, description: '직업능력개발 워크숍 진행' },
+  { id: 11, title: '한신대 강의', category: '강의', image: null, description: '한신대학교 컴퓨터공학 강의' },
+  { id: 12, title: '캡스톤 디자인 지도', category: '강의', image: null, description: '캡스톤 디자인 프로젝트 지도' },
+]
+
+export const documents = [
+  {
+    id: 1,
+    title: '이력서',
+    description: '이애본 교수 이력서 (최신)',
+    type: 'pdf',
+    date: '2024-01',
+    url: '#',
+  },
+  {
+    id: 2,
+    title: '포트폴리오',
+    description: 'IT교육 및 HRD 분야 포트폴리오',
+    type: 'pdf',
+    date: '2024-01',
+    url: '#',
+  },
+  {
+    id: 3,
+    title: '강의계획서',
+    description: '한신대학교 강의계획서 모음',
+    type: 'doc',
+    date: '2024-03',
+    url: '#',
+  },
+  {
+    id: 4,
+    title: '훈련과정 소개서',
+    description: '한국직업능력개발센터 훈련과정 안내',
+    type: 'pdf',
+    date: '2023-12',
+    url: '#',
+  },
+  {
+    id: 5,
+    title: '연구실적 목록',
+    description: '학술논문 및 연구 프로젝트 실적 목록',
+    type: 'doc',
+    date: '2024-02',
+    url: '#',
+  },
+  {
+    id: 6,
+    title: '자격증 사본',
+    description: '보유 자격증 사본 모음',
+    type: 'pdf',
+    date: '2024-01',
+    url: '#',
+  },
 ]
 
 export const navLinks = [
@@ -426,5 +483,7 @@ export const navLinks = [
   { id: 'publications', label: '논문' },
   { id: 'timeline', label: '연혁' },
   { id: 'teaching', label: '강의' },
+  { id: 'gallery', label: '갤러리' },
+  { id: 'documents', label: '자료실' },
   { id: 'contact', label: '연락처' },
 ]

@@ -20,6 +20,7 @@ import Timeline from './components/sections/Timeline'
 import Teaching from './components/sections/Teaching'
 import Testimonials from './components/sections/Testimonials'
 import Gallery from './components/sections/Gallery'
+import Documents from './components/sections/Documents'
 import Contact from './components/sections/Contact'
 
 import './App.css'
@@ -46,6 +47,7 @@ export default function App() {
         <Teaching />
         <Testimonials />
         <Gallery />
+        <Documents />
         <Contact />
       </main>
       <Footer />
