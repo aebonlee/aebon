@@ -14,9 +14,9 @@ export default function Publications() {
         <SectionTitle title="논문 / 발표" subtitle="Publications & Presentations" />
         <div className="pub__grid">
           {publications.map((group, i) => (
-            <Card key={i} className={`pub__card scroll-animate delay-${i + 1}`} color={i === 0 ? '#6C63FF' : '#FF6584'}>
+            <Card key={i} className={`pub__card scroll-animate delay-${i + 1}`} color={i === 0 ? '#1D4ED8' : '#2563EB'}>
               <div className="pub__header">
-                <div className="pub__icon" style={{ background: i === 0 ? '#6C63FF' : '#FF6584' }}>
+                <div className="pub__icon" style={{ background: i === 0 ? '#1D4ED8' : '#2563EB' }}>
                   {i === 0 ? <FaFileAlt /> : <FaMicrophone />}
                 </div>
                 <h3 className="pub__type">{group.type}</h3>

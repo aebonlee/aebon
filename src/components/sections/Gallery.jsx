@@ -6,7 +6,7 @@ import './Gallery.css'
 
 export default function Gallery() {
   const sectionRef = useScrollAnimation()
-  const colors = ['#6C63FF', '#FF6584', '#00C9A7', '#FFC75F', '#4ECDC4', '#A855F7']
+  const colors = ['#1D4ED8', '#2563EB', '#3B82F6', '#0EA5E9', '#06B6D4', '#6366F1']
 
   return (
     <section id="gallery" ref={sectionRef}>

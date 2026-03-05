@@ -10,7 +10,7 @@
 }
 
 [data-theme='dark'] .hero {
-  background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 50%, #0f0e17 100%);
+  background: linear-gradient(135deg, #020617 0%, #0F172A 40%, #1E3A5F 100%);
 }
 
 .hero__content {
@@ -51,7 +51,7 @@
 }
 
 .hero__name-highlight {
-  background: linear-gradient(135deg, #FFC75F 0%, #FF6584 100%);
+  background: linear-gradient(135deg, #38BDF8 0%, #22D3EE 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -95,7 +95,7 @@
 
 .hero__btn--primary {
   background: #fff;
-  color: #6C63FF;
+  color: #1D4ED8;
 }
 
 .hero__btn--primary:hover {

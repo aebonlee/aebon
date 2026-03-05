@@ -15,12 +15,12 @@ export const personalInfo = {
 }
 
 export const aboutKeywords = [
-  { label: 'IT교육 전문가', icon: 'FaLaptopCode', color: '#6C63FF' },
-  { label: 'HRD 컨설턴트', icon: 'FaUsers', color: '#FF6584' },
-  { label: '직업능력개발', icon: 'FaCertificate', color: '#00C9A7' },
-  { label: '대학 겸임교수', icon: 'FaChalkboardTeacher', color: '#FFC75F' },
-  { label: '품질경영 전문가', icon: 'FaAward', color: '#4ECDC4' },
-  { label: '26년+ 경력', icon: 'FaBriefcase', color: '#A855F7' },
+  { label: 'IT교육 전문가', icon: 'FaLaptopCode', color: '#2563EB' },
+  { label: 'HRD 컨설턴트', icon: 'FaUsers', color: '#0EA5E9' },
+  { label: '직업능력개발', icon: 'FaCertificate', color: '#06B6D4' },
+  { label: '대학 겸임교수', icon: 'FaChalkboardTeacher', color: '#3B82F6' },
+  { label: '품질경영 전문가', icon: 'FaAward', color: '#22D3EE' },
+  { label: '26년+ 경력', icon: 'FaBriefcase', color: '#6366F1' },
 ]
 
 export const aboutDescription = `안녕하세요, 이애본입니다.
@@ -43,7 +43,7 @@ export const education = [
     field: '경영학 / 품질경영',
     period: '2020 ~ 현재',
     status: '재학중',
-    color: '#6C63FF',
+    color: '#1D4ED8',
   },
   {
     degree: '공학 박사수료',
@@ -51,7 +51,7 @@ export const education = [
     field: '산업공학 / HRD',
     period: '2015 ~ 2019',
     status: '수료',
-    color: '#FF6584',
+    color: '#2563EB',
   },
   {
     degree: '컴퓨터과학 석사',
@@ -59,7 +59,7 @@ export const education = [
     field: '컴퓨터과학',
     period: '2005 ~ 2007',
     status: '졸업',
-    color: '#00C9A7',
+    color: '#0EA5E9',
   },
   {
     degree: '컴퓨터과학 학사',
@@ -67,7 +67,7 @@ export const education = [
     field: '컴퓨터과학',
     period: '2001 ~ 2005',
     status: '졸업',
-    color: '#FFC75F',
+    color: '#06B6D4',
   },
 ]
 
@@ -127,7 +127,7 @@ export const certifications = [
       '문화콘텐츠', '산업교육', '기업교육', '평생교육',
     ],
     icon: 'FaGraduationCap',
-    color: '#6C63FF',
+    color: '#1D4ED8',
   },
   {
     category: '국가자격증',
@@ -139,7 +139,7 @@ export const certifications = [
       '평생교육사 2급',
     ],
     icon: 'FaCertificate',
-    color: '#FF6584',
+    color: '#2563EB',
   },
   {
     category: '민간자격 / 기타',
@@ -151,7 +151,7 @@ export const certifications = [
       'ICDL(국제컴퓨터운전면허)',
     ],
     icon: 'FaMedal',
-    color: '#00C9A7',
+    color: '#0EA5E9',
   },
 ]
 
@@ -159,7 +159,7 @@ export const skills = [
   {
     category: 'IT 기술',
     icon: 'FaCode',
-    color: '#6C63FF',
+    color: '#1D4ED8',
     items: [
       { name: 'Web Development', level: 90 },
       { name: 'Database / SQL', level: 85 },
@@ -172,7 +172,7 @@ export const skills = [
   {
     category: '교육 역량',
     icon: 'FaChalkboardTeacher',
-    color: '#FF6584',
+    color: '#2563EB',
     items: [
       { name: '교수설계(ISD)', level: 95 },
       { name: '교육과정 개발', level: 90 },
@@ -184,7 +184,7 @@ export const skills = [
   {
     category: '연구 역량',
     icon: 'FaFlask',
-    color: '#00C9A7',
+    color: '#0EA5E9',
     items: [
       { name: 'AHP 분석', level: 90 },
       { name: '통계분석 (SPSS)', level: 80 },
@@ -195,7 +195,7 @@ export const skills = [
   {
     category: '경영 / 품질관리',
     icon: 'FaTasks',
-    color: '#FFC75F',
+    color: '#06B6D4',
     items: [
       { name: '품질경영시스템(QMS)', level: 85 },
       { name: '프로젝트 관리', level: 85 },
@@ -210,42 +210,42 @@ export const projects = [
     title: '대학교 통합 웹사이트 구축',
     description: '대학교 공식 웹사이트의 기획, 설계, 개발 총괄. 반응형 웹 디자인 적용 및 CMS 구축.',
     tags: ['Web Development', 'CMS', 'Responsive Design'],
-    color: '#6C63FF',
+    color: '#1D4ED8',
     icon: 'FaGlobe',
   },
   {
     title: 'HRD-TMS 훈련관리시스템',
     description: '직업능력개발훈련 관리를 위한 통합 시스템 개발. 훈련생 관리, 출결, 평가, 수료 관리.',
     tags: ['System Development', 'HRD', 'Database'],
-    color: '#FF6584',
+    color: '#2563EB',
     icon: 'FaServer',
   },
   {
     title: 'AHP 기반 의사결정 플랫폼',
     description: 'AHP(계층분석과정) 기법을 활용한 의사결정 지원 웹 플랫폼 개발.',
     tags: ['AHP', 'Decision Making', 'Web App'],
-    color: '#00C9A7',
+    color: '#0EA5E9',
     icon: 'FaChartBar',
   },
   {
     title: 'NCS 기반 교육과정 개발',
     description: '국가직무능력표준(NCS) 기반 IT 분야 교육과정 설계 및 교재 개발.',
     tags: ['NCS', 'Curriculum', 'Education'],
-    color: '#FFC75F',
+    color: '#3B82F6',
     icon: 'FaBook',
   },
   {
     title: '이러닝 콘텐츠 개발',
     description: '온라인 교육 플랫폼용 IT 교육 콘텐츠 기획 및 제작. LMS 연동.',
     tags: ['E-Learning', 'LMS', 'Content'],
-    color: '#4ECDC4',
+    color: '#06B6D4',
     icon: 'FaDesktop',
   },
   {
     title: '직업훈련 품질관리 체계 구축',
     description: '훈련기관 품질관리 시스템 구축 및 내부평가 프로세스 수립.',
     tags: ['Quality Management', 'HRD', 'Process'],
-    color: '#A855F7',
+    color: '#6366F1',
     icon: 'FaClipboardCheck',
   },
 ]
@@ -257,7 +257,7 @@ export const awards = [
     year: '2006',
     description: '직업능력개발 분야 우수 공로',
     icon: 'FaTrophy',
-    color: '#FFC75F',
+    color: '#38BDF8',
   },
   {
     title: '고용노동부 장관상',
@@ -265,7 +265,7 @@ export const awards = [
     year: '2012',
     description: '직업능력개발훈련 분야 우수 공로',
     icon: 'FaMedal',
-    color: '#6C63FF',
+    color: '#1D4ED8',
   },
   {
     title: '고용노동부 장관상',
@@ -273,7 +273,7 @@ export const awards = [
     year: '2018',
     description: '인적자원개발(HRD) 분야 우수 공로',
     icon: 'FaAward',
-    color: '#FF6584',
+    color: '#2563EB',
   },
   {
     title: '중소벤처기업부 장관상',
@@ -281,7 +281,7 @@ export const awards = [
     year: '2022',
     description: '중소기업 인력양성 분야 공로',
     icon: 'FaStar',
-    color: '#00C9A7',
+    color: '#0EA5E9',
   },
 ]
 
@@ -332,18 +332,18 @@ export const publications = [
 ]
 
 export const timeline = [
-  { year: '1998', event: 'IT 교육 분야 첫 강의 시작', color: '#6C63FF' },
-  { year: '2001', event: '한국방송통신대학교 컴퓨터과학과 입학', color: '#FF6584' },
-  { year: '2005', event: '컴퓨터과학 학사 취득 / 대학원 진학', color: '#00C9A7' },
-  { year: '2006', event: '산업자원부 장관상 수상', color: '#FFC75F' },
-  { year: '2007', event: '컴퓨터과학 석사 취득', color: '#4ECDC4' },
-  { year: '2012', event: '고용노동부 장관상 수상 / 선문대 출강', color: '#A855F7' },
-  { year: '2015', event: '한국직업능력개발센터 설립 / 경기대 박사과정 입학', color: '#6C63FF' },
-  { year: '2018', event: '고용노동부 장관상 수상 / 한국기술교육대 출강', color: '#FF6584' },
-  { year: '2019', event: '경기대 공학 박사수료', color: '#00C9A7' },
-  { year: '2020', event: '한신대학교 겸임교수 임용 / 서울벤처대학원 박사과정 입학', color: '#FFC75F' },
-  { year: '2022', event: '중소벤처기업부 장관상 수상', color: '#4ECDC4' },
-  { year: '현재', event: '한신대 겸임교수 · 한국직업능력개발센터장', color: '#6C63FF' },
+  { year: '1998', event: 'IT 교육 분야 첫 강의 시작', color: '#1D4ED8' },
+  { year: '2001', event: '한국방송통신대학교 컴퓨터과학과 입학', color: '#2563EB' },
+  { year: '2005', event: '컴퓨터과학 학사 취득 / 대학원 진학', color: '#3B82F6' },
+  { year: '2006', event: '산업자원부 장관상 수상', color: '#0EA5E9' },
+  { year: '2007', event: '컴퓨터과학 석사 취득', color: '#06B6D4' },
+  { year: '2012', event: '고용노동부 장관상 수상 / 선문대 출강', color: '#6366F1' },
+  { year: '2015', event: '한국직업능력개발센터 설립 / 경기대 박사과정 입학', color: '#1D4ED8' },
+  { year: '2018', event: '고용노동부 장관상 수상 / 한국기술교육대 출강', color: '#2563EB' },
+  { year: '2019', event: '경기대 공학 박사수료', color: '#0EA5E9' },
+  { year: '2020', event: '한신대학교 겸임교수 임용 / 서울벤처대학원 박사과정 입학', color: '#3B82F6' },
+  { year: '2022', event: '중소벤처기업부 장관상 수상', color: '#06B6D4' },
+  { year: '현재', event: '한신대 겸임교수 · 한국직업능력개발센터장', color: '#1D4ED8' },
 ]
 
 export const teaching = [
@@ -354,7 +354,7 @@ export const teaching = [
       '소프트웨어공학', '네트워크개론', '정보보안',
     ],
     icon: 'FaLaptopCode',
-    color: '#6C63FF',
+    color: '#1D4ED8',
   },
   {
     category: '데이터 / AI',
@@ -363,7 +363,7 @@ export const teaching = [
       '인공지능 기초', '머신러닝 입문',
     ],
     icon: 'FaBrain',
-    color: '#FF6584',
+    color: '#2563EB',
   },
   {
     category: '캡스톤 / 프로젝트',
@@ -371,7 +371,7 @@ export const teaching = [
       '캡스톤디자인', 'IT프로젝트실습', '졸업작품',
     ],
     icon: 'FaProjectDiagram',
-    color: '#00C9A7',
+    color: '#0EA5E9',
   },
   {
     category: '직업능력개발',
@@ -380,7 +380,7 @@ export const teaching = [
       '교수설계(ISD)', '훈련교사 양성과정',
     ],
     icon: 'FaUserGraduate',
-    color: '#FFC75F',
+    color: '#06B6D4',
   },
 ]
 

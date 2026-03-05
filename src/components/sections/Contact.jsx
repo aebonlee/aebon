@@ -9,10 +9,10 @@ export default function Contact() {
   const sectionRef = useScrollAnimation()
 
   const contactItems = [
-    { icon: <FaEnvelope />, label: '이메일', value: personalInfo.email, href: `mailto:${personalInfo.email}`, color: '#6C63FF' },
-    { icon: <FaMapMarkerAlt />, label: '위치', value: personalInfo.location, href: null, color: '#FF6584' },
-    { icon: <FaGithub />, label: 'GitHub', value: 'github.com/aebonlee', href: personalInfo.social.github, color: '#00C9A7' },
-    { icon: <FaGlobe />, label: '웹사이트', value: 'aebon.dreamitbiz.com', href: personalInfo.website, color: '#FFC75F' },
+    { icon: <FaEnvelope />, label: '이메일', value: personalInfo.email, href: `mailto:${personalInfo.email}`, color: '#1D4ED8' },
+    { icon: <FaMapMarkerAlt />, label: '위치', value: personalInfo.location, href: null, color: '#2563EB' },
+    { icon: <FaGithub />, label: 'GitHub', value: 'github.com/aebonlee', href: personalInfo.social.github, color: '#0EA5E9' },
+    { icon: <FaGlobe />, label: '웹사이트', value: 'aebon.dreamitbiz.com', href: personalInfo.website, color: '#3B82F6' },
   ]
 
   return (
