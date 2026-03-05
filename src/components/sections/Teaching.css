@@ -1,0 +1,45 @@
+.teaching__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.teaching__icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-lg);
+}
+
+.teaching__category {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-lg);
+}
+
+.teaching__courses {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.teaching__course {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  padding: var(--space-xs) 0;
+}
+
+.teaching__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .teaching__grid {
+    grid-template-columns: 1fr;
+  }
+}
