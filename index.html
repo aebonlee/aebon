@@ -10,6 +10,14 @@
     <meta property="og:description" content="한신대학교 겸임교수 / 한국직업능력개발센터장" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://aebon.dreamitbiz.com" />
+    <meta property="og:image" content="https://aebon.dreamitbiz.com/og-image.png" />
+    <meta property="og:site_name" content="이애본" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="이애본 | 학술 포트폴리오" />
+    <meta name="twitter:description" content="한신대학교 겸임교수 / 한국직업능력개발센터장" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://aebon.dreamitbiz.com/" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
@@ -17,6 +25,19 @@
     <link rel="stylesheet" crossorigin href="/assets/index-D68l1QTY.css">
   </head>
   <body>
-    <div id="root"></div>
+    <!-- GitHub Pages SPA redirect companion script -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <div id="root"></div>
   </body>
 </html>
