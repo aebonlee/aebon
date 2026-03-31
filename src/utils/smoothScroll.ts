@@ -1,4 +1,4 @@
-export function smoothScrollTo(elementId) {
+export function smoothScrollTo(elementId: string): void {
   const element = document.getElementById(elementId)
   if (element) {
     const navbarHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')) || 72

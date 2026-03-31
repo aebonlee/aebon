@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 
-export function useActiveSection(sectionIds) {
-  const [activeSection, setActiveSection] = useState(sectionIds[0] || '')
+export function useActiveSection(sectionIds: string[]): string {
+  const [activeSection, setActiveSection] = useState<string>(sectionIds[0] || '')
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveSection(entry.target.id)

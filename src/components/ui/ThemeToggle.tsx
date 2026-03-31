@@ -1,7 +1,13 @@
+import React from 'react'
 import { FaSun, FaMoon } from 'react-icons/fa'
 import './ThemeToggle.css'
 
-export default function ThemeToggle({ theme, toggleTheme }) {
+interface ThemeToggleProps {
+  theme: string
+  toggleTheme: () => void
+}
+
+export default function ThemeToggle({ theme, toggleTheme }: ThemeToggleProps): React.ReactElement {
   return (
     <button
       className="theme-toggle"

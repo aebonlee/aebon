@@ -1,13 +1,15 @@
+import React from 'react'
 import { FaGraduationCap, FaCertificate, FaMedal } from 'react-icons/fa'
+import type { IconType } from 'react-icons'
 import SectionTitle from '../ui/SectionTitle'
 import Card from '../ui/Card'
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { certifications } from '../../data/portfolioData'
 import './Certifications.css'
 
-const iconMap = { FaGraduationCap, FaCertificate, FaMedal }
+const iconMap: Record<string, IconType> = { FaGraduationCap, FaCertificate, FaMedal }
 
-export default function Certifications() {
+export default function Certifications(): React.ReactElement {
   const sectionRef = useScrollAnimation()
 
   return (

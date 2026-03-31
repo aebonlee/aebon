@@ -1,13 +1,15 @@
+import React from 'react'
 import { FaCode, FaChalkboardTeacher, FaFlask, FaTasks } from 'react-icons/fa'
+import type { IconType } from 'react-icons'
 import SectionTitle from '../ui/SectionTitle'
 import Card from '../ui/Card'
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { skills } from '../../data/portfolioData'
 import './Skills.css'
 
-const iconMap = { FaCode, FaChalkboardTeacher, FaFlask, FaTasks }
+const iconMap: Record<string, IconType> = { FaCode, FaChalkboardTeacher, FaFlask, FaTasks }
 
-export default function Skills() {
+export default function Skills(): React.ReactElement {
   const sectionRef = useScrollAnimation()
 
   return (

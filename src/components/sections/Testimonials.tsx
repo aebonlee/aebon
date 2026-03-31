@@ -1,3 +1,4 @@
+import React from 'react'
 import { FaStar, FaQuoteLeft } from 'react-icons/fa'
 import SectionTitle from '../ui/SectionTitle'
 import Card from '../ui/Card'
@@ -5,7 +6,7 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { testimonials } from '../../data/portfolioData'
 import './Testimonials.css'
 
-export default function Testimonials() {
+export default function Testimonials(): React.ReactElement {
   const sectionRef = useScrollAnimation()
 
   return (

@@ -1,13 +1,15 @@
+import React from 'react'
 import { FaTrophy, FaMedal, FaAward, FaStar } from 'react-icons/fa'
+import type { IconType } from 'react-icons'
 import SectionTitle from '../ui/SectionTitle'
 import Card from '../ui/Card'
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { awards } from '../../data/portfolioData'
 import './Awards.css'
 
-const iconMap = { FaTrophy, FaMedal, FaAward, FaStar }
+const iconMap: Record<string, IconType> = { FaTrophy, FaMedal, FaAward, FaStar }
 
-export default function Awards() {
+export default function Awards(): React.ReactElement {
   const sectionRef = useScrollAnimation()
 
   return (

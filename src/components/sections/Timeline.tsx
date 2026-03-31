@@ -1,9 +1,10 @@
+import React from 'react'
 import SectionTitle from '../ui/SectionTitle'
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { timeline } from '../../data/portfolioData'
 import './Timeline.css'
 
-export default function Timeline() {
+export default function Timeline(): React.ReactElement {
   const sectionRef = useScrollAnimation()
 
   return (

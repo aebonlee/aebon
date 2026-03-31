@@ -1,3 +1,4 @@
+import React from 'react'
 import { FaGraduationCap } from 'react-icons/fa'
 import SectionTitle from '../ui/SectionTitle'
 import Card from '../ui/Card'
@@ -5,7 +6,7 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { education } from '../../data/portfolioData'
 import './Education.css'
 
-export default function Education() {
+export default function Education(): React.ReactElement {
   const sectionRef = useScrollAnimation()
 
   return (

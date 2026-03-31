@@ -1,10 +1,11 @@
+import React from 'react'
 import { FaBriefcase } from 'react-icons/fa'
 import SectionTitle from '../ui/SectionTitle'
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { career } from '../../data/portfolioData'
 import './Career.css'
 
-export default function Career() {
+export default function Career(): React.ReactElement {
   const sectionRef = useScrollAnimation()
 
   return (

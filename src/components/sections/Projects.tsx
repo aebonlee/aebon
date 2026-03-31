@@ -1,13 +1,15 @@
+import React from 'react'
 import { FaGlobe, FaServer, FaChartBar, FaBook, FaDesktop, FaClipboardCheck } from 'react-icons/fa'
+import type { IconType } from 'react-icons'
 import SectionTitle from '../ui/SectionTitle'
 import Card from '../ui/Card'
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { projects } from '../../data/portfolioData'
 import './Projects.css'
 
-const iconMap = { FaGlobe, FaServer, FaChartBar, FaBook, FaDesktop, FaClipboardCheck }
+const iconMap: Record<string, IconType> = { FaGlobe, FaServer, FaChartBar, FaBook, FaDesktop, FaClipboardCheck }
 
-export default function Projects() {
+export default function Projects(): React.ReactElement {
   const sectionRef = useScrollAnimation()
 
   return (

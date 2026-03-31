@@ -1,24 +1,37 @@
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './ParticleBackground.css'
 
-export default function ParticleBackground() {
-  const canvasRef = useRef(null)
+interface Particle {
+  x: number
+  y: number
+  size: number
+  speedX: number
+  speedY: number
+  color: string
+  opacity: number
+}
+
+export default function ParticleBackground(): React.ReactElement {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
-    let animationId
-    let particles = []
+    if (!ctx) return
+    let animationId: number
+    let particles: Particle[] = []
 
-    const colors = ['#1D4ED8', '#2563EB', '#3B82F6', '#0EA5E9', '#06B6D4', '#6366F1']
+    const colors: string[] = ['#1D4ED8', '#2563EB', '#3B82F6', '#0EA5E9', '#06B6D4', '#6366F1']
 
-    function resize() {
+    function resize(): void {
+      if (!canvas || !canvas.parentElement) return
       canvas.width = canvas.parentElement.offsetWidth
       canvas.height = canvas.parentElement.offsetHeight
     }
 
-    function createParticles() {
+    function createParticles(): void {
+      if (!canvas) return
       particles = []
       const count = Math.floor((canvas.width * canvas.height) / 15000)
       for (let i = 0; i < count; i++) {
@@ -34,7 +47,8 @@ export default function ParticleBackground() {
       }
     }
 
-    function animate() {
+    function animate(): void {
+      if (!canvas || !ctx) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       particles.forEach((p) => {
@@ -78,14 +92,16 @@ export default function ParticleBackground() {
     createParticles()
     animate()
 
-    window.addEventListener('resize', () => {
+    const handleResize = (): void => {
       resize()
       createParticles()
-    })
+    }
+
+    window.addEventListener('resize', handleResize)
 
     return () => {
       cancelAnimationFrame(animationId)
-      window.removeEventListener('resize', resize)
+      window.removeEventListener('resize', handleResize)
     }
   }, [])
 

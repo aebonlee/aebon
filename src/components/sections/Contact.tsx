@@ -1,3 +1,4 @@
+import React from 'react'
 import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaGlobe } from 'react-icons/fa'
 import SectionTitle from '../ui/SectionTitle'
 import Card from '../ui/Card'
@@ -5,10 +6,18 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { personalInfo } from '../../data/portfolioData'
 import './Contact.css'
 
-export default function Contact() {
+interface ContactItem {
+  icon: React.ReactElement
+  label: string
+  value: string
+  href: string | null
+  color: string
+}
+
+export default function Contact(): React.ReactElement {
   const sectionRef = useScrollAnimation()
 
-  const contactItems = [
+  const contactItems: ContactItem[] = [
     { icon: <FaEnvelope />, label: '이메일', value: personalInfo.email, href: `mailto:${personalInfo.email}`, color: '#1D4ED8' },
     { icon: <FaMapMarkerAlt />, label: '위치', value: personalInfo.location, href: null, color: '#2563EB' },
     { icon: <FaGithub />, label: 'GitHub', value: 'github.com/aebonlee', href: personalInfo.social.github, color: '#0EA5E9' },

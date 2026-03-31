@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'react'
 
-export function useScrollAnimation(threshold = 0.15) {
-  const ref = useRef(null)
+export function useScrollAnimation(threshold: number = 0.15): React.RefObject<HTMLElement | null> {
+  const ref = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     const node = ref.current
     if (!node) return
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible')

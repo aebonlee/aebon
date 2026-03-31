@@ -1,4 +1,138 @@
-export const personalInfo = {
+// ── Type definitions ──
+
+export interface PersonalInfo {
+  name: string
+  nameEn: string
+  title: string
+  subtitle: string
+  tagline: string
+  description: string
+  email: string
+  phone: string
+  location: string
+  website: string
+  social: {
+    github: string
+  }
+}
+
+export interface AboutKeyword {
+  label: string
+  icon: string
+  color: string
+}
+
+export interface EducationItem {
+  degree: string
+  school: string
+  field: string
+  period: string
+  status: string
+  color: string
+}
+
+export interface CareerItem {
+  title: string
+  organization: string
+  period: string
+  description: string
+  type: 'current' | 'past' | 'ongoing'
+}
+
+export interface CertificationCategory {
+  category: string
+  items: string[]
+  icon: string
+  color: string
+}
+
+export interface SkillItem {
+  name: string
+  level: number
+}
+
+export interface SkillCategory {
+  category: string
+  icon: string
+  color: string
+  items: SkillItem[]
+}
+
+export interface ProjectItem {
+  title: string
+  description: string
+  tags: string[]
+  color: string
+  icon: string
+}
+
+export interface AwardItem {
+  title: string
+  organization: string
+  year: string
+  description: string
+  icon: string
+  color: string
+}
+
+export interface PublicationArticle {
+  title: string
+  journal?: string
+  venue?: string
+  year: string
+  authors?: string
+}
+
+export interface PublicationGroup {
+  type: string
+  items: PublicationArticle[]
+}
+
+export interface TimelineItem {
+  year: string
+  event: string
+  color: string
+}
+
+export interface TeachingCategory {
+  category: string
+  courses: string[]
+  icon: string
+  color: string
+}
+
+export interface TestimonialItem {
+  text: string
+  author: string
+  role: string
+  rating: number
+}
+
+export interface GalleryItem {
+  id: number
+  title: string
+  category: string
+  image: string | null
+  description: string
+}
+
+export interface DocumentItem {
+  id: number
+  title: string
+  description: string
+  type: 'pdf' | 'doc' | 'link'
+  date: string
+  url: string
+}
+
+export interface NavLink {
+  id: string
+  label: string
+}
+
+// ── Data ──
+
+export const personalInfo: PersonalInfo = {
   name: '이애본',
   nameEn: 'Lee Aebon',
   title: '한신대학교 겸임교수',
@@ -14,7 +148,7 @@ export const personalInfo = {
   },
 }
 
-export const aboutKeywords = [
+export const aboutKeywords: AboutKeyword[] = [
   { label: 'IT교육 전문가', icon: 'FaLaptopCode', color: '#2563EB' },
   { label: 'HRD 컨설턴트', icon: 'FaUsers', color: '#0EA5E9' },
   { label: '직업능력개발', icon: 'FaCertificate', color: '#06B6D4' },
@@ -23,7 +157,7 @@ export const aboutKeywords = [
   { label: '26년+ 경력', icon: 'FaBriefcase', color: '#6366F1' },
 ]
 
-export const aboutDescription = `안녕하세요, 이애본입니다.
+export const aboutDescription: string = `안녕하세요, 이애본입니다.
 
 IT교육과 직업능력개발 분야에서 26년 이상의 경험을 쌓아온 교육 전문가입니다.
 한신대학교 겸임교수로서 차세대 인재를 양성하고, 한국직업능력개발센터장으로서
@@ -36,7 +170,7 @@ IT교육과 직업능력개발 분야에서 26년 이상의 경험을 쌓아온 
 기술과 교육의 융합을 통해 실무 중심의 교육을 실현하고,
 모든 사람이 역량을 개발할 수 있는 기회를 만드는 것이 저의 비전입니다.`
 
-export const education = [
+export const education: EducationItem[] = [
   {
     degree: '경영학 박사과정',
     school: '서울벤처대학원대학교',
@@ -71,7 +205,7 @@ export const education = [
   },
 ]
 
-export const career = [
+export const career: CareerItem[] = [
   {
     title: '겸임교수',
     organization: '한신대학교',
@@ -116,7 +250,7 @@ export const career = [
   },
 ]
 
-export const certifications = [
+export const certifications: CertificationCategory[] = [
   {
     category: '직업능력개발훈련교사',
     items: [
@@ -155,7 +289,7 @@ export const certifications = [
   },
 ]
 
-export const skills = [
+export const skills: SkillCategory[] = [
   {
     category: 'IT 기술',
     icon: 'FaCode',
@@ -205,7 +339,7 @@ export const skills = [
   },
 ]
 
-export const projects = [
+export const projects: ProjectItem[] = [
   {
     title: '대학교 통합 웹사이트 구축',
     description: '대학교 공식 웹사이트의 기획, 설계, 개발 총괄. 반응형 웹 디자인 적용 및 CMS 구축.',
@@ -250,7 +384,7 @@ export const projects = [
   },
 ]
 
-export const awards = [
+export const awards: AwardItem[] = [
   {
     title: '산업자원부 장관상',
     organization: '산업자원부',
@@ -285,7 +419,7 @@ export const awards = [
   },
 ]
 
-export const publications = [
+export const publications: PublicationGroup[] = [
   {
     type: '학술논문',
     items: [
@@ -331,7 +465,7 @@ export const publications = [
   },
 ]
 
-export const timeline = [
+export const timeline: TimelineItem[] = [
   { year: '1998', event: 'IT 교육 분야 첫 강의 시작', color: '#1D4ED8' },
   { year: '2001', event: '한국방송통신대학교 컴퓨터과학과 입학', color: '#2563EB' },
   { year: '2005', event: '컴퓨터과학 학사 취득 / 대학원 진학', color: '#3B82F6' },
@@ -346,7 +480,7 @@ export const timeline = [
   { year: '현재', event: '한신대 겸임교수 · 한국직업능력개발센터장', color: '#1D4ED8' },
 ]
 
-export const teaching = [
+export const teaching: TeachingCategory[] = [
   {
     category: 'IT / 프로그래밍',
     courses: [
@@ -384,7 +518,7 @@ export const teaching = [
   },
 ]
 
-export const testimonials = [
+export const testimonials: TestimonialItem[] = [
   {
     text: '실무 경험을 바탕으로 한 강의가 매우 유익했습니다. 이론과 실습의 균형이 잘 잡혀있어 실제 현장에서 바로 적용할 수 있었습니다.',
     author: '수강생 A',
@@ -405,7 +539,7 @@ export const testimonials = [
   },
 ]
 
-export const galleryItems = [
+export const galleryItems: GalleryItem[] = [
   { id: 1, title: '산업자원부 장관상', category: '상장', image: null, description: '2006년 직업능력개발 분야 우수 공로 수상' },
   { id: 2, title: '고용노동부 장관상', category: '상장', image: null, description: '2012년 직업능력개발훈련 분야 우수 공로 수상' },
   { id: 3, title: '고용노동부 장관상 (HRD)', category: '상장', image: null, description: '2018년 인적자원개발 분야 우수 공로 수상' },
@@ -420,7 +554,7 @@ export const galleryItems = [
   { id: 12, title: '캡스톤 디자인 지도', category: '강의', image: null, description: '캡스톤 디자인 프로젝트 지도' },
 ]
 
-export const documents = [
+export const documents: DocumentItem[] = [
   {
     id: 1,
     title: '이력서',
@@ -471,7 +605,7 @@ export const documents = [
   },
 ]
 
-export const navLinks = [
+export const navLinks: NavLink[] = [
   { id: 'hero', label: '홈' },
   { id: 'about', label: '소개' },
   { id: 'education', label: '학력' },

@@ -1,8 +1,9 @@
+import React from 'react'
 import { FaGithub, FaEnvelope, FaHeart } from 'react-icons/fa'
 import { personalInfo } from '../../data/portfolioData'
 import './Footer.css'
 
-export default function Footer() {
+export default function Footer(): React.ReactElement {
   return (
     <footer className="footer">
       <div className="container">

@@ -1,21 +1,27 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import ThemeToggle from '../ui/ThemeToggle'
 import { smoothScrollTo } from '../../utils/smoothScroll'
 import { navLinks } from '../../data/portfolioData'
 import './Navbar.css'
 
-export default function Navbar({ theme, toggleTheme, activeSection }) {
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+interface NavbarProps {
+  theme: string
+  toggleTheme: () => void
+  activeSection: string
+}
+
+export default function Navbar({ theme, toggleTheme, activeSection }: NavbarProps): React.ReactElement {
+  const [scrolled, setScrolled] = useState<boolean>(false)
+  const [menuOpen, setMenuOpen] = useState<boolean>(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    const handleScroll = (): void => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleNavClick = (id) => {
+  const handleNavClick = (id: string): void => {
     smoothScrollTo(id)
     setMenuOpen(false)
   }

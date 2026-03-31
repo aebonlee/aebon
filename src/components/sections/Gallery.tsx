@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import { FaCamera } from 'react-icons/fa'
 import SectionTitle from '../ui/SectionTitle'
 import Lightbox from '../ui/Lightbox'
@@ -6,13 +6,13 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { galleryItems } from '../../data/portfolioData'
 import './Gallery.css'
 
-const CATEGORIES = ['전체', '상장', '자격증', '활동', '강의']
-const COLORS = ['#1D4ED8', '#2563EB', '#3B82F6', '#0EA5E9', '#06B6D4', '#6366F1']
+const CATEGORIES: string[] = ['전체', '상장', '자격증', '활동', '강의']
+const COLORS: string[] = ['#1D4ED8', '#2563EB', '#3B82F6', '#0EA5E9', '#06B6D4', '#6366F1']
 
-export default function Gallery() {
+export default function Gallery(): React.ReactElement {
   const sectionRef = useScrollAnimation()
-  const [activeCategory, setActiveCategory] = useState('전체')
-  const [lightboxIndex, setLightboxIndex] = useState(null)
+  const [activeCategory, setActiveCategory] = useState<string>('전체')
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   const filtered = useMemo(
     () =>
@@ -22,8 +22,8 @@ export default function Gallery() {
     [activeCategory],
   )
 
-  const openLightbox = (filteredIdx) => setLightboxIndex(filteredIdx)
-  const closeLightbox = () => setLightboxIndex(null)
+  const openLightbox = (filteredIdx: number): void => setLightboxIndex(filteredIdx)
+  const closeLightbox = (): void => setLightboxIndex(null)
 
   return (
     <section id="gallery" ref={sectionRef}>

@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { useTheme } from './hooks/useTheme'
 import { useActiveSection } from './hooks/useActiveSection'
 import { navLinks } from './data/portfolioData'
@@ -25,7 +25,7 @@ import Contact from './components/sections/Contact'
 
 import './App.css'
 
-export default function App() {
+export default function App(): React.ReactElement {
   const { theme, toggleTheme } = useTheme()
   const sectionIds = useMemo(() => navLinks.map((l) => l.id), [])
   const activeSection = useActiveSection(sectionIds)

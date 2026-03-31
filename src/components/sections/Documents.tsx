@@ -1,17 +1,26 @@
+import React from 'react'
 import { FaFilePdf, FaFileWord, FaExternalLinkAlt, FaDownload, FaCalendarAlt } from 'react-icons/fa'
+import type { IconType } from 'react-icons'
 import SectionTitle from '../ui/SectionTitle'
 import Card from '../ui/Card'
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { documents } from '../../data/portfolioData'
+import type { DocumentItem } from '../../data/portfolioData'
 import './Documents.css'
 
-const TYPE_CONFIG = {
+interface TypeConfig {
+  icon: IconType
+  color: string
+  label: string
+}
+
+const TYPE_CONFIG: Record<string, TypeConfig> = {
   pdf: { icon: FaFilePdf, color: '#E74C3C', label: 'PDF' },
   doc: { icon: FaFileWord, color: '#2B579A', label: 'DOC' },
   link: { icon: FaExternalLinkAlt, color: '#0EA5E9', label: 'LINK' },
 }
 
-export default function Documents() {
+export default function Documents(): React.ReactElement {
   const sectionRef = useScrollAnimation()
 
   return (
@@ -19,7 +28,7 @@ export default function Documents() {
       <div className="container">
         <SectionTitle title="자료실" subtitle="Documents" />
         <div className="documents__grid">
-          {documents.map((doc, i) => {
+          {documents.map((doc: DocumentItem, i: number) => {
             const config = TYPE_CONFIG[doc.type] || TYPE_CONFIG.pdf
             const Icon = config.icon
             return (

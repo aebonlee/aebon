@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaArrowUp } from 'react-icons/fa'
 import './ScrollToTop.css'
 
-export default function ScrollToTop() {
-  const [visible, setVisible] = useState(false)
+export default function ScrollToTop(): React.ReactElement {
+  const [visible, setVisible] = useState<boolean>(false)
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       setVisible(window.scrollY > 400)
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToTop = () => {
+  const scrollToTop = (): void => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 

@@ -1,14 +1,22 @@
-import { useEffect, useCallback } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import type { GalleryItem } from '../../data/portfolioData'
 import './Lightbox.css'
 
-export default function Lightbox({ items, currentIndex, onClose, onNavigate }) {
+interface LightboxProps {
+  items: GalleryItem[]
+  currentIndex: number
+  onClose: () => void
+  onNavigate: (index: number) => void
+}
+
+export default function Lightbox({ items, currentIndex, onClose, onNavigate }: LightboxProps): React.ReactElement | null {
   const item = items[currentIndex]
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex < items.length - 1
 
   const handleKeyDown = useCallback(
-    (e) => {
+    (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
       if (e.key === 'ArrowLeft' && hasPrev) onNavigate(currentIndex - 1)
       if (e.key === 'ArrowRight' && hasNext) onNavigate(currentIndex + 1)
@@ -27,12 +35,12 @@ export default function Lightbox({ items, currentIndex, onClose, onNavigate }) {
 
   if (!item) return null
 
-  const colors = ['#1D4ED8', '#2563EB', '#3B82F6', '#0EA5E9', '#06B6D4', '#6366F1']
+  const colors: string[] = ['#1D4ED8', '#2563EB', '#3B82F6', '#0EA5E9', '#06B6D4', '#6366F1']
   const colorIndex = currentIndex % colors.length
 
   return (
     <div className="lightbox" onClick={onClose}>
-      <div className="lightbox__content" onClick={(e) => e.stopPropagation()}>
+      <div className="lightbox__content" onClick={(e: React.MouseEvent) => e.stopPropagation()}>
         <button className="lightbox__close" onClick={onClose} aria-label="닫기">
           <FaTimes />
         </button>

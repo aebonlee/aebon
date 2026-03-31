@@ -1,3 +1,4 @@
+import React from 'react'
 import { FaFileAlt, FaMicrophone } from 'react-icons/fa'
 import SectionTitle from '../ui/SectionTitle'
 import Card from '../ui/Card'
@@ -5,7 +6,7 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import { publications } from '../../data/portfolioData'
 import './Publications.css'
 
-export default function Publications() {
+export default function Publications(): React.ReactElement {
   const sectionRef = useScrollAnimation()
 
   return (

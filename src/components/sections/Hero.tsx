@@ -1,10 +1,11 @@
+import React from 'react'
 import { FaChevronDown, FaGithub, FaEnvelope } from 'react-icons/fa'
 import ParticleBackground from '../ui/ParticleBackground'
 import { personalInfo } from '../../data/portfolioData'
 import { smoothScrollTo } from '../../utils/smoothScroll'
 import './Hero.css'
 
-export default function Hero() {
+export default function Hero(): React.ReactElement {
   return (
     <section id="hero" className="hero">
       <ParticleBackground />
